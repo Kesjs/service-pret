@@ -1,4 +1,6 @@
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import { useEffect, useState } from 'react';
+
 import Home from './pages/Home';
 import NosOffres from './pages/NosOffres';
 import PretAuto from './components/PretAuto';
@@ -8,8 +10,23 @@ import PretPro from './components/PretPro';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import Breadcrumb from './components/Breadcrumb';
+import Loader from './components/Loader'; // 👈 Ton nouveau loader
 
 function App() {
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setLoading(false);
+    }, 6000); // ⏱️ Durée du chargement (2 secondes ici)
+
+    return () => clearTimeout(timer);
+  }, []);
+
+  if (loading) {
+    return <Loader />;
+  }
+
   return (
     <Router>
       <div className="min-h-screen flex flex-col">
@@ -30,7 +47,6 @@ function App() {
   );
 }
 
-// Composant réutilisable avec fil d’Ariane dynamique
 const WithBreadcrumb = ({ component, title }: { component: JSX.Element; title: string }) => (
   <div className="container mx-auto px-4 py-6">
     <Breadcrumb
