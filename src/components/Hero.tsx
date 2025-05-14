@@ -1,26 +1,20 @@
 import { motion } from 'framer-motion';
 import { ArrowRight } from 'lucide-react';
-import { useState, useEffect } from 'react';
 
 export default function Hero() {
-  const images = [
-    'https://enterprisectr.org/wp-content/uploads/2019/08/9-24-19-Business-Financials-PURCHASED-scaled.jpeg',
-  ];
-
-  const [currentImage, setCurrentImage] = useState(0);
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentImage((prevImage) => (prevImage + 1) % images.length);
-    }, 8000); // Changer l'image toutes les 8 secondes pour un défilement plus lent
-
-    return () => clearInterval(interval); // Clear the interval on component unmount
-  }, []);
+  const backgroundImage =
+    'https://enterprisectr.org/wp-content/uploads/2019/08/9-24-19-Business-Financials-PURCHASED-scaled.jpeg';
 
   return (
     <section
       id="hero"
       className="relative min-h-screen flex items-center justify-center px-4 py-20 text-white"
+      style={{
+        backgroundImage: `url(${backgroundImage})`,
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        backgroundRepeat: 'no-repeat',
+      }}
     >
       {/* Overlay sombre pour lisibilité */}
       <div className="absolute inset-0 bg-black bg-opacity-60 z-0" />
@@ -40,15 +34,13 @@ export default function Hero() {
           Des solutions rapides, fiables et transparentes pour financer vos projets.
         </p>
 
-        {/* Badge de confiance */}
         <p className="inline-block bg-white text-gray-900 text-sm font-semibold px-4 py-2 rounded-full shadow mb-6">
           🔒 100% sécurisé — Réponse en moins de 24h
         </p>
 
-        {/* Boutons avec transition améliorée */}
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
           <motion.a
-            href="#"
+            href="#nos-offres"
             className="flex items-center justify-center bg-yellow-400 text-black px-6 py-3 rounded-full text-sm font-medium hover:bg-yellow-300 transition-all"
             whileHover={{ scale: 1.05, boxShadow: '0 4px 10px rgba(0, 0, 0, 0.2)' }}
             whileTap={{ scale: 0.95 }}
@@ -57,7 +49,7 @@ export default function Hero() {
             <ArrowRight className="w-4 h-4 ml-2" />
           </motion.a>
           <motion.a
-            href="#"
+            href="#services"
             className="flex items-center justify-center border-2 border-white text-white px-6 py-3 rounded-full text-sm font-medium hover:bg-white hover:text-black transition-all"
             whileHover={{ scale: 1.05, boxShadow: '0 4px 10px rgba(0, 0, 0, 0.2)' }}
             whileTap={{ scale: 0.95 }}
@@ -66,33 +58,6 @@ export default function Hero() {
           </motion.a>
         </div>
       </motion.div>
-
-      {/* Fond avec images qui défilent lentement sans espace */}
-      <div className="absolute inset-0 flex z-0">
-        {images.map((image, index) => (
-          <motion.div
-            key={index}
-            initial={{ opacity: 0, x: '100%' }}
-            animate={{
-              opacity: 0.7,
-              x: '0%',
-              transition: { duration: 2, ease: 'easeInOut' },
-            }}
-            exit={{
-              opacity: 0,
-              x: '-100%',
-              transition: { duration: 2, ease: 'easeInOut' },
-            }}
-            style={{
-              backgroundImage: `url(${image})`,
-              backgroundSize: 'cover',
-              backgroundPosition: 'center',
-              backgroundRepeat: 'no-repeat',
-              flex: '0 0 100%', // Chaque image prend 100% de la largeur
-            }}
-          />
-        ))}
-      </div>
     </section>
   );
 }

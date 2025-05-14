@@ -1,4 +1,3 @@
-// src/App.tsx
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Home from './pages/Home';
 import NosOffres from './pages/NosOffres';
@@ -10,20 +9,19 @@ import Header from './components/Header';
 import Footer from './components/Footer';
 import Breadcrumb from './components/Breadcrumb';
 
-
 function App() {
   return (
     <Router>
-      <div className="min-h-screen">
+      <div className="min-h-screen flex flex-col">
         <Header />
-        <main>
+        <main className="flex-grow">
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/nos-offres" element={<NosOffres />} />
-            <Route path="/nos-offres/pret-personnel" element={<PretPersoPage />} />
-            <Route path="/nos-offres/pret-immobilier" element={<PretImmoPage />} />
-            <Route path="/nos-offres/pret-auto" element={<PretAutoPage />} />
-            <Route path="/nos-offres/pret-pro" element={<PretProPage />} />
+            <Route path="/nos-offres/pret-personnel" element={<WithBreadcrumb component={<PretPerso />} title="Prêt Personnel" />} />
+            <Route path="/nos-offres/pret-immobilier" element={<WithBreadcrumb component={<PretImmo />} title="Prêt Immobilier" />} />
+            <Route path="/nos-offres/pret-auto" element={<WithBreadcrumb component={<PretAuto />} title="Prêt Auto" />} />
+            <Route path="/nos-offres/pret-pro" element={<WithBreadcrumb component={<PretPro />} title="Prêt Professionnel" />} />
           </Routes>
         </main>
         <Footer />
@@ -32,31 +30,17 @@ function App() {
   );
 }
 
-const PretPersoPage = () => (
-  <div>
-    <Breadcrumb />
-    <PretPerso />
-  </div>
-);
-
-const PretImmoPage = () => (
-  <div>
-    <Breadcrumb />
-    <PretImmo />
-  </div>
-);
-
-const PretAutoPage = () => (
-  <div>
-    <Breadcrumb />
-    <PretAuto />
-  </div>
-);
-
-const PretProPage = () => (
-  <div>
-    <Breadcrumb />
-    <PretPro />
+// Composant réutilisable avec fil d’Ariane dynamique
+const WithBreadcrumb = ({ component, title }: { component: JSX.Element; title: string }) => (
+  <div className="container mx-auto px-4 py-6">
+    <Breadcrumb
+      items={[
+        { label: 'Accueil', path: '/' },
+        { label: 'Nos Offres', path: '/nos-offres' },
+        { label: title }
+      ]}
+    />
+    {component}
   </div>
 );
 

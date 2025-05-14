@@ -1,42 +1,34 @@
 import React from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
-const Breadcrumb: React.FC = () => {
-  const location = useLocation();
-  const pathnames = location.pathname.split('/').filter(Boolean);
+interface BreadcrumbItem {
+  label: string;
+  path?: string;
+}
 
+interface BreadcrumbProps {
+  items: BreadcrumbItem[];
+}
+
+const Breadcrumb: React.FC<BreadcrumbProps> = ({ items }) => {
   return (
-    <nav className="text-sm text-gray-600 px-6 md:px-20 pt-6">
+    <nav className="text-sm text-gray-600   pt-32 px-6 md:px-20">
       <ol className="flex flex-wrap items-center space-x-2">
-        <li>
-          <Link to="/" className="hover:text-yellow-600 font-medium">Accueil</Link>
-        </li>
-        {pathnames.length > 0 && (
-          <>
-            <li>
-              <span className="mx-2">&gt;</span>
-              <Link to="/nos-offres" className="hover:text-yellow-600">Nos Offres Crédit</Link>
+        {items.map((item, index) => {
+          const isLast = index === items.length - 1;
+          return (
+            <li key={index} className="flex items-center">
+              {index !== 0 && <span className="mx-2">&gt;</span>}
+              {item.path && !isLast ? (
+                <Link to={item.path} className="hover:text-yellow-600 capitalize font-medium">
+                  {item.label}
+                </Link>
+              ) : (
+                <span className="text-gray-500 capitalize">{item.label}</span>
+              )}
             </li>
-            {pathnames.slice(1).map((name, index) => {
-              const routeTo = `/nos-offres/${pathnames.slice(1, index + 2).join('/')}`;
-              const isLast = index === pathnames.slice(1).length - 1;
-              return (
-                <li key={index} className="flex items-center">
-                  <span className="mx-2">&gt;</span>
-                  {isLast ? (
-                    <span className="text-gray-500 capitalize">
-                      {decodeURIComponent(name.replace('-', ' '))}
-                    </span>
-                  ) : (
-                    <Link to={routeTo} className="hover:text-yellow-600 capitalize">
-                      {decodeURIComponent(name.replace('-', ' '))}
-                    </Link>
-                  )}
-                </li>
-              );
-            })}
-          </>
-        )}
+          );
+        })}
       </ol>
     </nav>
   );

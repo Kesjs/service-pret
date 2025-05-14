@@ -13,6 +13,12 @@ const creditOffers = [
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [showDropdown, setShowDropdown] = useState(false);
+  const [isContentVisible, setIsContentVisible] = useState(false); // État pour afficher le contenu de NosOffres
+
+  const handleNosOffresClick = () => {
+    setIsContentVisible(!isContentVisible); // Bascule la visibilité du composant NosOffres
+    setShowDropdown(false); // Ferme le dropdown quand on clique sur NosOffres
+  };
 
   return (
     <header className="fixed w-full bg-white shadow-md z-50">
@@ -24,7 +30,7 @@ export default function Header() {
             transition={{ duration: 0.5 }}
             className="text-2xl font-bold text-yellow-500"
           >
-            Services
+            Services-Prêt
           </motion.h1>
 
           <nav className="hidden md:flex space-x-8 items-center">
@@ -49,12 +55,13 @@ export default function Header() {
               <motion.button
                 className="flex items-center text-gray-600 hover:text-yellow-500 transition-all"
                 whileHover={{ scale: 1.05 }}
+                onClick={handleNosOffresClick} // Handle click on "Nos Offres"
               >
                 Nos offres crédit <ChevronDown className="ml-1 w-4 h-4" />
               </motion.button>
 
               <AnimatePresence>
-                {showDropdown && (
+                {showDropdown && !isContentVisible && (
                   <motion.ul
                     initial={{ opacity: 0, y: -10 }}
                     animate={{ opacity: 1, y: 0 }}
@@ -79,7 +86,7 @@ export default function Header() {
             </div>
           </nav>
 
-          {/* Call Button */}
+          {/* Call Button for larger screens */}
           <motion.div
             className="hidden md:flex items-center"
             initial={{ opacity: 0, x: 20 }}
@@ -107,6 +114,81 @@ export default function Header() {
           </div>
         </div>
       </div>
+
+      {/* Menu mobile */}
+      <AnimatePresence>
+        {isMenuOpen && (
+          <motion.div
+            initial={{ opacity: 0, y: -10 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -10 }}
+            transition={{ duration: 0.3 }}
+            className="md:hidden absolute left-0 right-0 top-20 bg-white shadow-lg"
+          >
+            <div className="space-y-4 px-4 py-4 flex flex-col justify-center items-center">
+              {/* Menu Items */}
+              {['Accueil', 'Services', 'À propos', 'Contact'].map((item) => (
+                <motion.a
+                  key={item}
+                  href={item === 'Accueil' ? '#hero' : `#${item.toLowerCase()}`}
+                  className="block text-gray-600 hover:text-yellow-500 transition-colors"
+                  whileHover={{ scale: 1.1 }}
+                  onClick={() => setIsMenuOpen(false)}
+                >
+                  {item}
+                </motion.a>
+              ))}
+
+              {/* Nos offres crédit */}
+              <motion.button
+                className="flex items-center text-gray-600 hover:text-yellow-500 transition-all"
+                whileHover={{ scale: 1.05 }}
+                onClick={handleNosOffresClick} // Handle click on "Nos Offres"
+              >
+                Nos offres crédit <ChevronDown className="ml-1 w-4 h-4" />
+              </motion.button>
+
+              {isContentVisible && (
+                <motion.ul
+                  initial={{ opacity: 0, y: -10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -10 }}
+                  transition={{ duration: 0.2 }}
+                  className=" mt-2 shadow-xl rounded-lg py-2 w-full"
+                >
+                  {creditOffers.map((offer, index) => (
+                    <li key={index}>
+                      <Link
+                        to={offer.href}
+                        className="block px-4 py-2 text-gray-700 hover:bg-yellow-100 hover:text-yellow-600 transition-all"
+                        onClick={() => setIsMenuOpen(false)} // Close menu when selecting offer
+                      >
+                        {offer.title}
+                      </Link>
+                    </li>
+                  ))}
+                </motion.ul>
+              )}
+
+              {/* Call Button for Mobile */}
+              <motion.div
+                className="flex items-center bg-yellow-500 text-white px-4 py-2 rounded-full hover:bg-yellow-600 transition-colors mt-4"
+                initial={{ opacity: 0, x: 20 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.5 }}
+              >
+                <a
+                  href="tel:+33123456789"
+                  className="flex items-center text-white"
+                >
+                  <Phone className="w-4 h-4 mr-2" />
+                  <span>Appelez-nous</span>
+                </a>
+              </motion.div>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </header>
   );
 }
