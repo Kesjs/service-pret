@@ -4,20 +4,20 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 
 const creditOffers = [
-  { title: 'Prêt Personnel', href: '/nos-offres/pret-personnel' },
-  { title: 'Prêt Immobilier', href: '/nos-offres/pret-immobilier' },
-  { title: 'Prêt Auto', href: '/nos-offres/pret-auto' },
-  { title: 'Prêt Professionnel', href: '/nos-offres/pret-pro' },
+  { title: 'Prestito Personale', href: '/nos-offres/pret-personnel' },
+  { title: 'Mutuo Immobiliare', href: '/nos-offres/pret-immobilier' },
+  { title: 'Prestito Auto', href: '/nos-offres/pret-auto' },
+  { title: 'Prestito Professionale', href: '/nos-offres/pret-pro' },
 ];
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [showDropdown, setShowDropdown] = useState(false);
-  const [isContentVisible, setIsContentVisible] = useState(false); // État pour afficher le contenu de NosOffres
+  const [isContentVisible, setIsContentVisible] = useState(false); // Stato per mostrare il contenuto di Offerte
 
   const handleNosOffresClick = () => {
-    setIsContentVisible(!isContentVisible); // Bascule la visibilité du composant NosOffres
-    setShowDropdown(false); // Ferme le dropdown quand on clique sur NosOffres
+    setIsContentVisible(!isContentVisible); // Alterna la visibilità del contenuto
+    setShowDropdown(false); // Chiude il dropdown quando si clicca su Offerte
   };
 
   return (
@@ -30,14 +30,14 @@ export default function Header() {
             transition={{ duration: 0.5 }}
             className="text-2xl font-bold text-yellow-500"
           >
-            Services-Prêt
+            Servizi-Prestito
           </motion.h1>
 
           <nav className="hidden md:flex space-x-8 items-center">
-            {['Accueil', 'Services', 'À propos', 'Contact'].map((item) => (
+            {['Home', 'Servizi', 'Chi siamo', 'Contatto'].map((item) => (
               <motion.a
                 key={item}
-                href={item === 'Accueil' ? '#hero' : `#${item.toLowerCase()}`}
+                href={item === 'Home' ? '#hero' : `#${item.toLowerCase().replace(' ', '-')}`}
                 className="text-gray-600 hover:text-yellow-500 transition-colors"
                 whileHover={{ scale: 1.1 }}
                 onClick={() => setIsMenuOpen(false)}
@@ -46,7 +46,7 @@ export default function Header() {
               </motion.a>
             ))}
 
-            {/* Nos offres crédit */}
+            {/* Offerte di credito */}
             <div
               className="relative"
               onMouseEnter={() => setShowDropdown(true)}
@@ -55,9 +55,9 @@ export default function Header() {
               <motion.button
                 className="flex items-center text-gray-600 hover:text-yellow-500 transition-all"
                 whileHover={{ scale: 1.05 }}
-                onClick={handleNosOffresClick} // Handle click on "Nos Offres"
+                onClick={handleNosOffresClick}
               >
-                Nos offres crédit <ChevronDown className="ml-1 w-4 h-4" />
+                Le nostre offerte di credito <ChevronDown className="ml-1 w-4 h-4" />
               </motion.button>
 
               <AnimatePresence>
@@ -86,7 +86,7 @@ export default function Header() {
             </div>
           </nav>
 
-          {/* Call Button for larger screens */}
+          {/* Pulsante chiamata su schermi grandi */}
           <motion.div
             className="hidden md:flex items-center"
             initial={{ opacity: 0, x: 20 }}
@@ -98,11 +98,11 @@ export default function Header() {
               className="flex items-center bg-yellow-500 text-white px-4 py-2 rounded-full hover:bg-yellow-600 transition-colors"
             >
               <Phone className="w-4 h-4 mr-2" />
-              <span>Appelez-nous</span>
+              <span>Chiamaci</span>
             </a>
           </motion.div>
 
-          {/* Mobile Menu Icon */}
+          {/* Icona menu mobile */}
           <div className="md:hidden">
             <button
               onClick={() => setIsMenuOpen(!isMenuOpen)}
@@ -126,11 +126,10 @@ export default function Header() {
             className="md:hidden absolute left-0 right-0 top-20 bg-white shadow-lg"
           >
             <div className="space-y-4 px-4 py-4 flex flex-col justify-center items-center">
-              {/* Menu Items */}
-              {['Accueil', 'Services', 'À propos', 'Contact'].map((item) => (
+              {['Home', 'Servizi', 'Chi siamo', 'Contatto'].map((item) => (
                 <motion.a
                   key={item}
-                  href={item === 'Accueil' ? '#hero' : `#${item.toLowerCase()}`}
+                  href={item === 'Home' ? '#hero' : `#${item.toLowerCase().replace(' ', '-')}`}
                   className="block text-gray-600 hover:text-yellow-500 transition-colors"
                   whileHover={{ scale: 1.1 }}
                   onClick={() => setIsMenuOpen(false)}
@@ -139,13 +138,13 @@ export default function Header() {
                 </motion.a>
               ))}
 
-              {/* Nos offres crédit */}
+              {/* Offerte di credito */}
               <motion.button
                 className="flex items-center text-gray-600 hover:text-yellow-500 transition-all"
                 whileHover={{ scale: 1.05 }}
-                onClick={handleNosOffresClick} // Handle click on "Nos Offres"
+                onClick={handleNosOffresClick}
               >
-                Nos offres crédit <ChevronDown className="ml-1 w-4 h-4" />
+                Le nostre offerte di credito <ChevronDown className="ml-1 w-4 h-4" />
               </motion.button>
 
               {isContentVisible && (
@@ -161,7 +160,7 @@ export default function Header() {
                       <Link
                         to={offer.href}
                         className="block px-4 py-2 text-gray-700 hover:bg-yellow-100 hover:text-yellow-600 transition-all"
-                        onClick={() => setIsMenuOpen(false)} // Close menu when selecting offer
+                        onClick={() => setIsMenuOpen(false)}
                       >
                         {offer.title}
                       </Link>
@@ -170,7 +169,7 @@ export default function Header() {
                 </motion.ul>
               )}
 
-              {/* Call Button for Mobile */}
+              {/* Pulsante chiamata per mobile */}
               <motion.div
                 className="flex items-center bg-yellow-500 text-white px-4 py-2 rounded-full hover:bg-yellow-600 transition-colors mt-4"
                 initial={{ opacity: 0, x: 20 }}
@@ -182,7 +181,7 @@ export default function Header() {
                   className="flex items-center text-white"
                 >
                   <Phone className="w-4 h-4 mr-2" />
-                  <span>Appelez-nous</span>
+                  <span>Chiamaci</span>
                 </a>
               </motion.div>
             </div>
