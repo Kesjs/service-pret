@@ -1,4 +1,4 @@
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import { CreditCard, Home, DollarSign, Shield } from 'lucide-react';
 import { useState, useEffect } from 'react';
@@ -10,25 +10,26 @@ import { Users, Banknote, CheckCircle2, FileText } from 'lucide-react';
 const loanServices = [
   {
     icon: CreditCard,
-    title: 'Prêt Personnel',
-    description: 'Obtenez un prêt pour des projets personnels ou des besoins urgents.',
+    title: 'Prestito Personale',
+    description: 'Ottieni un prestito per progetti personali o esigenze urgenti.',
   },
   {
     icon: Home,
-    title: 'Prêt Immobilier',
-    description: 'Financez l’achat de votre maison ou appartement avec des taux compétitifs.',
+    title: 'Mutuo Immobiliare',
+    description: 'Finanzia l’acquisto della tua casa o appartamento con tassi competitivi.',
   },
   {
     icon: DollarSign,
-    title: 'Prêt Auto',
-    description: 'Accédez à un financement pour l’achat de votre véhicule neuf ou d’occasion.',
+    title: 'Prestito Auto',
+    description: 'Accedi a un finanziamento per l’acquisto del tuo veicolo nuovo o usato.',
   },
   {
     icon: Shield,
-    title: 'Prêt Professionnel',
-    description: 'Solution de financement pour les entrepreneurs et les petites entreprises.',
+    title: 'Prestito Professionale',
+    description: 'Soluzione di finanziamento per imprenditori e piccole imprese.',
   },
 ];
+
 
 export default function Services() {
   const [ref, inView] = useInView({ triggerOnce: true, threshold: 0.1 });
@@ -45,52 +46,59 @@ export default function Services() {
     return isFinite(monthlyPayment) ? monthlyPayment.toFixed(2) : "0.00";
   };
 
-  const testimonials = [
-    {
-      name: 'Sophie L.',
-      feedback: 'Grâce à ce prêt, j’ai pu acheter ma maison de rêve. Le processus a été rapide et transparent.',
-      avatar: 'https://randomuser.me/api/portraits/women/1.jpg',
-    },
-    {
-      name: 'Michel D.',
-      feedback: 'Un prêt simple et flexible pour acheter ma voiture. Les conditions étaient parfaites.',
-      avatar: 'https://randomuser.me/api/portraits/men/1.jpg',
-    },
-    {
-      name: 'Julien R.',
-      feedback: 'Je recommande vivement. Le prêt professionnel m’a permis de financer mon entreprise.',
-      avatar: 'https://randomuser.me/api/portraits/men/2.jpg',
-    },
-  ];
-
-const stats = [
-  { label: 'Clients satisfaits', value: 8500, icon: Users },
-  { label: 'Montant prêté (€)', value: 1250000, icon: Banknote },
-  { label: 'Taux d’approbation (%)', value: 92, icon: CheckCircle2 },
-  { label: 'Demandes traitées', value: 10420, icon: FileText },
+ const testimonials = [
+  {
+    name: 'Sophie L.',
+    feedback: 'Grazie a questo prestito, ho potuto acquistare la casa dei miei sogni. Il processo è stato rapido e trasparente.',
+    avatar: 'https://randomuser.me/api/portraits/women/1.jpg',
+  },
+  {
+    name: 'Michel D.',
+    feedback: 'Un prestito semplice e flessibile per comprare la mia auto. Le condizioni erano perfette.',
+    avatar: 'https://randomuser.me/api/portraits/men/1.jpg',
+  },
+  {
+    name: 'Michel D.',
+    feedback: 'Un prestito semplice e flessibile per comprare la mia auto. Le condizioni erano perfette.',
+    avatar: 'https://randomuser.me/api/portraits/men/1.jpg',
+  },
+  {
+    name: 'Julien R.',
+    feedback: 'Lo consiglio vivamente. Il prestito professionale mi ha permesso di finanziare la mia attività.',
+    avatar: 'https://randomuser.me/api/portraits/men/2.jpg',
+  },
 ];
 
 
-  const faqQuestions = [
-    {
-      question: "Comment suivre ma demande de crédit ?",
-      answer: "Vous pouvez suivre l'état de votre demande directement dans votre espace client ou contacter notre service client pour obtenir plus d'informations.",
-    },
-    {
-      question: "Quand aurai-je une réponse à ma demande de crédit ?",
-      answer: "Les réponses sont généralement envoyées dans un délai de 5 à 7 jours ouvrés après la réception de tous les documents nécessaires.",
-    },
-    {
-      question: "Quelles sont les pièces justificatives à fournir lors de la demande d'un prêt ?",
-      answer: "Les pièces justificatives nécessaires incluent une pièce d'identité, un justificatif de domicile, et vos trois derniers bulletins de salaire.",
-    },
-    {
-      question: "Quelles sont les conditions pour souscrire un crédit ?",
-      answer: "Les conditions varient en fonction du type de prêt, mais généralement, il est nécessaire d'avoir un revenu stable et de respecter une capacité d'emprunt adéquate.",
-    },
-  ];
+const stats = [
+  { label: 'Clienti soddisfatti', value: 8500, icon: Users },
+  { label: 'Importo erogato (€)', value: 725000, icon: Banknote },
+  { label: 'Tasso di approvazione (%)', value: 92, icon: CheckCircle2 },
+  { label: 'Richieste elaborate', value:9420, icon: FileText },
+];
 
-  const [testimonialIndex, setTestimonialIndex] = useState(0);
+
+ const faqQuestions = [
+  {
+    question: "Come posso seguire la mia richiesta di credito?",
+    answer: "Puoi seguire lo stato della tua richiesta direttamente dal tuo spazio personale o contattare il nostro servizio clienti per maggiori informazioni.",
+  },
+  {
+    question: "Quando riceverò una risposta alla mia richiesta di credito?",
+    answer: "Le risposte vengono generalmente inviate entro 5-7 giorni lavorativi dal ricevimento di tutti i documenti richiesti.",
+  },
+  {
+    question: "Quali documenti devo fornire per una richiesta di prestito?",
+    answer: "I documenti richiesti includono un documento d’identità, una prova di residenza e le ultime tre buste paga.",
+  },
+  {
+    question: "Quali sono le condizioni per ottenere un prestito?",
+    answer: "Le condizioni variano a seconda del tipo di prestito, ma in generale è necessario avere un reddito stabile e una capacità di rimborso adeguata.",
+  },
+];
+
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const [, setTestimonialIndex] = useState(0);
 
   const toggleFAQ = (index: number) => {
     setShowFAQ((prev) => ({ ...prev, [index]: !prev[index] }));
@@ -118,10 +126,9 @@ const stats = [
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl font-bold text-gray-900 mb-4">Nos Services de Prêt</h2>
+          <h2 className="text-4xl font-bold text-gray-900 mb-4">I nostri Servizi di Prestito</h2>
           <p className="text-xl text-gray-700 max-w-2xl mx-auto">
-            Des solutions de financement personnalisées pour tous vos besoins
-          </p>
+Soluzioni di finanziamento personalizzate per tutte le tue esigenze          </p>
         </motion.div>
 
         {/* Statistiques */}
@@ -186,12 +193,12 @@ const stats = [
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <h2 className="text-3xl font-bold text-gray-900 mb-4">Calculez votre Prêt</h2>
-          <p className="text-xl text-gray-700 mb-6">Estimez vos mensualités en quelques clics</p>
+          <h2 className="text-3xl font-bold text-gray-900 mb-4">Calcola il tuo Prestito</h2>
+          <p className="text-xl text-gray-700 mb-6">Stima le tue rate in pochi clic</p>
 
           <div className="space-y-6 max-w-2xl mx-auto">
             <div>
-              <label className="block text-gray-700 font-semibold mb-2">Montant du prêt (€)</label>
+              <label className="block text-gray-700 font-semibold mb-2">Importo del prestito (€)</label>
              <input
   type="number"
   value={amount}
@@ -204,7 +211,7 @@ const stats = [
             </div>
 
             <div>
-              <label className="block text-gray-700 font-semibold mb-2">Durée (en mois)</label>
+              <label className="block text-gray-700 font-semibold mb-2">Durata (in mesi)</label>
               <input
                 type="number"
                 value={duration}
@@ -214,7 +221,7 @@ const stats = [
             </div>
 
             <div>
-              <label className="block text-gray-700 font-semibold mb-2">Taux d'intérêt (%)</label>
+              <label className="block text-gray-700 font-semibold mb-2"> Tasso d'interesse (%)</label>
               <input
                 type="number"
                 value={interestRate}
@@ -225,7 +232,7 @@ const stats = [
 
             <div className="text-xl font-semibold ">
  <p>
-    Mensualité estimée : <span className="text-yellow-600">{calculateMonthlyPayment()} €</span>
+    Rata mensile stimata : <span className="text-yellow-600">{calculateMonthlyPayment()} €</span>
   </p>            </div>
           </div>
         </motion.div>
@@ -236,7 +243,7 @@ const stats = [
   transition={{ duration: 0.6 }}
   className="text-center mb-16 px-4"
 >
-  <h2 className="text-3xl font-bold text-gray-900 mb-8">Avis de nos Clients</h2>
+  <h2 className="text-3xl font-bold text-gray-900 mb-8">Recensioni dei nostri clienti</h2>
   <div className="flex flex-wrap justify-center gap-8">
     {testimonials.map((testimonial, index) => (
       <motion.div
@@ -272,7 +279,7 @@ const stats = [
   transition={{ duration: 0.6 }}
   className="text-center mb-16 px-4"
 >
-  <h2 className="text-3xl font-bold text-gray-900 mb-8">Foire aux Questions</h2>
+  <h2 className="text-3xl font-bold text-gray-900 mb-8">Domande frequenti (FAQ)</h2>
   <div className="space-y-4">
     {faqQuestions.map((faq, index) => (
       <motion.div

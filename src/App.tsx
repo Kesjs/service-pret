@@ -35,10 +35,10 @@ function App() {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/nos-offres" element={<NosOffres />} />
-            <Route path="/nos-offres/pret-personnel" element={<WithBreadcrumb component={<PretPerso />} title="Prêt Personnel" />} />
-            <Route path="/nos-offres/pret-immobilier" element={<WithBreadcrumb component={<PretImmo />} title="Prêt Immobilier" />} />
-            <Route path="/nos-offres/pret-auto" element={<WithBreadcrumb component={<PretAuto />} title="Prêt Auto" />} />
-            <Route path="/nos-offres/pret-pro" element={<WithBreadcrumb component={<PretPro />} title="Prêt Professionnel" />} />
+            <Route path="/nos-offres/pret-personnel" element={<WithBreadcrumb component={<PretPerso />} title="Prestito Personale" />} />
+            <Route path="/nos-offres/pret-immobilier" element={<WithBreadcrumb component={<PretImmo />} title="Prestito Immobiliare" />} />
+            <Route path="/nos-offres/pret-auto" element={<WithBreadcrumb component={<PretAuto />} title="Prestito Auto" />} />
+            <Route path="/nos-offres/pret-pro" element={<WithBreadcrumb component={<PretPro />} title="Prestito Professionale" />} />
           </Routes>
         </main>
         <Footer />
@@ -51,8 +51,8 @@ const WithBreadcrumb = ({ component, title }: { component: JSX.Element; title: s
   <div className="container mx-auto px-4 py-6">
     <Breadcrumb
       items={[
-        { label: 'Accueil', path: '/' },
-        { label: 'Nos Offres', path: '/nos-offres' },
+        { label: 'Home', path: '/' },
+        { label: 'Le nostre offerte', path: '/nos-offres' },
         { label: title }
       ]}
     />

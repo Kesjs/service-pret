@@ -2,12 +2,12 @@ import { motion } from 'framer-motion';
 import { Phone, Mail, MapPin, Send } from 'lucide-react';
 import { useState } from 'react';
 
-export default function Contact() {
+export default function Contatto() {
   const [formStatus, setFormStatus] = useState('');
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    setFormStatus('Message envoyé !');
+    setFormStatus('Messaggio inviato!');
     setTimeout(() => setFormStatus(''), 3000);
   };
 
@@ -20,14 +20,14 @@ export default function Contact() {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl font-bold text-yellow-800 mb-4">Contactez-nous</h2>
+          <h2 className="text-4xl font-bold text-yellow-800 mb-4">Contattaci</h2>
           <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-            Un projet ? Une question ? Notre équipe vous répond avec réactivité et professionnalisme.
+            Un progetto? Una domanda? Il nostro team risponde con reattività e professionalità.
           </p>
         </motion.div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
-          {/* Informations de contact */}
+          {/* Informazioni di contatto */}
           <motion.div
             initial={{ opacity: 0, x: -20 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -39,7 +39,7 @@ export default function Contact() {
                 <Phone className="w-5 h-5" />
               </div>
               <div className="ml-4">
-                <h3 className="text-lg font-semibold text-yellow-800">Téléphone</h3>
+                <h3 className="text-lg font-semibold text-yellow-800">Telefono</h3>
                 <p className="text-gray-600">+229 0197914922</p>
               </div>
             </div>
@@ -59,13 +59,13 @@ export default function Contact() {
                 <MapPin className="w-5 h-5" />
               </div>
               <div className="ml-4">
-                <h3 className="text-lg font-semibold text-yellow-800">Adresse</h3>
-                <p className="text-gray-600">42 Avenue de la Marina,75008 Cotonou</p>
+                <h3 className="text-lg font-semibold text-yellow-800">Indirizzo</h3>
+                <p className="text-gray-600">42 Avenue de la Marina, 75008 Cotonou</p>
               </div>
             </div>
           </motion.div>
 
-          {/* Formulaire de contact */}
+          {/* Modulo di contatto */}
           <motion.div
             initial={{ opacity: 0, x: 20 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -74,7 +74,7 @@ export default function Contact() {
             <form onSubmit={handleSubmit} className="bg-white p-8 rounded-xl shadow-lg space-y-6">
               <div>
                 <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-1">
-                  Nom
+                  Nome
                 </label>
                 <input
                   type="text"
@@ -96,7 +96,7 @@ export default function Contact() {
               </div>
               <div>
                 <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-1">
-                  Message
+                  Messaggio
                 </label>
                 <textarea
                   id="message"
@@ -112,7 +112,7 @@ export default function Contact() {
                 type="submit"
                 className="w-full bg-yellow-600 text-white px-6 py-3 rounded-lg hover:bg-yellow-700 transition-colors flex items-center justify-center font-semibold shadow-md"
               >
-                Envoyer
+                Invia
                 <Send className="w-5 h-5 ml-2" />
               </motion.button>
 

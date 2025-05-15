@@ -13,7 +13,7 @@ const PretImmo: React.FC = () => {
       setModalOpen(false);
       setShowForm(true);
     } else {
-      alert('Veuillez accepter les conditions avant de continuer.');
+      alert('Per favore, accetta le condizioni per continuare.');
     }
   };
 
@@ -25,32 +25,32 @@ const PretImmo: React.FC = () => {
   return (
     <>
       <section id="pret-immobilier" className="pt-12  px-6 md:px-20">
-        <h2 className="text-3xl font-bold text-yellow-600 mb-4">Prêt Immobilier</h2>
+        <h2 className="text-3xl font-bold text-yellow-600 mb-4">Prestito Immobiliare</h2>
 
         <div className="mb-6">
-          <h1 className="text-xl font-semibold text-blue-900 mb-2">Concrétisez votre rêve immobilier</h1>
+          <h1 className="text-xl font-semibold text-blue-900 mb-2">Realizza il tuo sogno immobiliare</h1>
           <div className="border-t-4 border-yellow-500 w-16 mb-4"></div>
           <p className="text-gray-700">
-            Que ce soit pour l'achat d'une maison, d'un appartement ou pour la construction de votre future résidence, 
-            notre prêt immobilier vous accompagne à chaque étape. Bénéficiez de conditions flexibles et adaptées à votre budget.
+            Che si tratti dell'acquisto di una casa, di un appartamento o della costruzione della tua futura residenza, 
+            il nostro prestito immobiliare ti accompagna in ogni fase. Approfitta di condizioni flessibili e adattate al tuo budget.
           </p>
         </div>
 
         <div className="mb-6">
-          <h1 className="text-xl font-semibold text-blue-900 mb-2">Une solution adaptée à votre profil</h1>
+          <h1 className="text-xl font-semibold text-blue-900 mb-2">Una soluzione adatta al tuo profilo</h1>
           <div className="border-t-4 border-yellow-500 w-16 mb-4"></div>
           <p className="text-gray-700">
-            Nous analysons votre situation financière pour vous proposer une offre personnalisée, que vous soyez primo-accédant, investisseur ou en projet de résidence secondaire. 
-            Avec des taux compétitifs et un accompagnement expert, avancez sereinement dans votre projet.
+            Analizziamo la tua situazione finanziaria per offrirti una proposta personalizzata, che tu sia un primo acquirente, un investitore o in cerca di una seconda casa. 
+            Con tassi competitivi e supporto esperto, avanzare nel tuo progetto sarà sereno.
           </p>
         </div>
 
         <div className="mb-6">
-          <h1 className="text-xl font-semibold text-blue-900 mb-2">Un accompagnement clair et rapide</h1>
+          <h1 className="text-xl font-semibold text-blue-900 mb-2">Un supporto chiaro e veloce</h1>
           <div className="border-t-4 border-yellow-500 w-16 mb-4"></div>
           <p className="text-gray-700">
-            De la simulation au déblocage des fonds, notre processus de prêt immobilier est transparent et rapide. 
-            Nos conseillers sont à votre disposition pour répondre à toutes vos questions et vous aider à franchir chaque étape avec confiance.
+            Dalla simulazione al rilascio dei fondi, il nostro processo di prestito immobiliare è trasparente e veloce. 
+            I nostri consulenti sono a tua disposizione per rispondere a tutte le tue domande e aiutarti ad affrontare ogni fase con fiducia.
           </p>
         </div>
 
@@ -58,7 +58,7 @@ const PretImmo: React.FC = () => {
           onClick={toggleModal}
           className="bg-blue-900 text-white px-6 py-2 rounded hover:bg-yellow-500 transition cursor-pointer"
         >
-          Faire une demande
+          Fai una richiesta
         </a>
       </section>
 
@@ -66,10 +66,10 @@ const PretImmo: React.FC = () => {
       {isModalOpen && (
         <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50">
           <div className="bg-white p-6 rounded w-96">
-            <h2 className="text-2xl font-semibold mb-4">Conditions Générales</h2>
+            <h2 className="text-2xl font-semibold mb-4">Termini e Condizioni</h2>
             <form>
               <div className="mb-4">
-                <label className="block text-gray-700">Quelle est votre situation financière actuelle ?</label>
+                <label className="block text-gray-700">Qual è la tua situazione finanziaria attuale?</label>
                 <input
                   type="text"
                   name="question1"
@@ -80,7 +80,7 @@ const PretImmo: React.FC = () => {
               </div>
 
               <div className="mb-4">
-                <label className="block text-gray-700">Avez-vous un apport personnel ?</label>
+                <label className="block text-gray-700">Hai un contributo personale?</label>
                 <input
                   type="text"
                   name="question2"
@@ -98,7 +98,7 @@ const PretImmo: React.FC = () => {
                     onChange={() => setIsAccepted(!isAccepted)}
                     className="form-checkbox"
                   />
-                  <span className="ml-2">J'accepte les conditions générales</span>
+                  <span className="ml-2">Accetto i termini e le condizioni</span>
                 </label>
               </div>
 
@@ -107,48 +107,48 @@ const PretImmo: React.FC = () => {
                 onClick={handleSubmit}
                 className="bg-blue-900 text-white px-6 py-2 rounded hover:bg-yellow-500 transition"
               >
-                Passer au formulaire
+                Passa al modulo
               </button>
               <button
                 type="button"
                 onClick={toggleModal}
                 className="ml-4 text-gray-500 hover:text-gray-700"
               >
-                Fermer
+                Chiudi
               </button>
             </form>
           </div>
         </div>
       )}
 
-      {/* Formulaire de demande */}
+      {/* Modulo di richiesta */}
       {showForm && (
         <section className="bg-white p-8 rounded shadow-lg max-w-xl mx-auto mt-8">
-          <h3 className="text-2xl font-semibold text-blue-900 mb-4">Formulaire de Demande de Prêt</h3>
+          <h3 className="text-2xl font-semibold text-blue-900 mb-4">Modulo di richiesta del prestito</h3>
 
           <form>
             <div className="mb-4">
-              <label className="block text-gray-700 mb-1">Type de prêt</label>
+              <label className="block text-gray-700 mb-1">Tipo di prestito</label>
               <input
                 type="text"
-                value="Prêt Immobilier"
+                value="Prestito Immobiliare"
                 readOnly
                 className="w-full px-3 py-2 border border-gray-300 rounded bg-gray-100 text-gray-500 cursor-not-allowed"
               />
             </div>
 
             <div className="mb-4">
-              <label className="block text-gray-700 mb-1">Nom Complet</label>
+              <label className="block text-gray-700 mb-1">Nome Completo</label>
               <input type="text" className="w-full px-3 py-2 border border-gray-300 rounded" />
             </div>
 
             <div className="mb-4">
-              <label className="block text-gray-700 mb-1">Montant souhaité (€)</label>
+              <label className="block text-gray-700 mb-1">Importo desiderato (€)</label>
               <input type="number" className="w-full px-3 py-2 border border-gray-300 rounded" />
             </div>
 
             <div className="mb-4">
-              <label className="block text-gray-700 mb-1">Durée du prêt (mois)</label>
+              <label className="block text-gray-700 mb-1">Durata del prestito (mesi)</label>
               <input type="number" className="w-full px-3 py-2 border border-gray-300 rounded" />
             </div>
 
@@ -156,7 +156,7 @@ const PretImmo: React.FC = () => {
               type="submit"
               className="bg-yellow-500 text-white px-6 py-2 rounded hover:bg-blue-900 transition"
             >
-              Envoyer la demande
+              Invia la richiesta
             </button>
           </form>
         </section>

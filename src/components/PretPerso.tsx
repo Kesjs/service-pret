@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 
-const PretAuto: React.FC = () => {
+const PrestitoPersonale: React.FC = () => {
   const [isModalOpen, setModalOpen] = useState(false);
   const [isAccepted, setIsAccepted] = useState(false);
   const [showForm, setShowForm] = useState(false);
@@ -11,41 +11,39 @@ const PretAuto: React.FC = () => {
   const handleSubmit = () => {
     if (isAccepted) {
       setModalOpen(false);
-      setTimeout(() => setShowForm(true), 300); // délai pour une meilleure transition
+      setTimeout(() => setShowForm(true), 300);
     } else {
-      alert("Veuillez accepter les conditions avant de soumettre.");
+      alert("Si prega di accettare i termini e le condizioni prima di inviare.");
     }
   };
 
   return (
     <>
-      <section id="pret-auto" className="pt-12 px-6 md:px-20">
-        <h2 className="text-3xl font-bold text-yellow-600 mb-4">Prêt Auto</h2>
+      <section id="pret-perso" className="pt-12 px-6 md:px-20">
+        <h2 className="text-3xl font-bold text-yellow-600 mb-4">Prestito Personale</h2>
 
         <div className="mb-6">
-          <h1 className="text-xl font-semibold text-blue-900 mb-2">Roulez vers la liberté</h1>
+          <h1 className="text-xl font-semibold text-blue-900 mb-2">Realizza liberamente i tuoi progetti</h1>
           <div className="border-t-4 border-yellow-500 w-16 mb-4"></div>
           <p className="text-gray-700">
-            Que vous souhaitiez acquérir un véhicule neuf ou d’occasion, le prêt auto est la solution idéale pour financer votre achat sans délai.
-            Simplifiez vos démarches et repartez au volant de votre voiture en toute sérénité.
+            Il prestito personale ti permette di finanziare i tuoi desideri senza doverne giustificare l'uso: viaggi, lavori, matrimonio o imprevisti.
+            Usa liberamente i fondi secondo le tue necessità.
           </p>
         </div>
 
         <div className="mb-6">
-          <h1 className="text-xl font-semibold text-blue-900 mb-2">Des conditions flexibles</h1>
+          <h1 className="text-xl font-semibold text-blue-900 mb-2">Flessibilità e semplicità</h1>
           <div className="border-t-4 border-yellow-500 w-16 mb-4"></div>
           <p className="text-gray-700">
-            Profitez d’un crédit auto à taux avantageux, avec des mensualités adaptées à votre budget. Que ce soit pour une voiture de ville, un SUV ou un véhicule utilitaire, 
-            notre offre s’adapte à vos besoins spécifiques.
+            Goditi rate mensili flessibili e un tasso interessante. Il nostro prestito personale si adatta al tuo budget per offrirti serenità nella vita quotidiana.
           </p>
         </div>
 
         <div className="mb-6">
-          <h1 className="text-xl font-semibold text-blue-900 mb-2">Obtenez votre financement rapidement</h1>
+          <h1 className="text-xl font-semibold text-blue-900 mb-2">Richiesta rapida e sicura</h1>
           <div className="border-t-4 border-yellow-500 w-16 mb-4"></div>
           <p className="text-gray-700">
-            Grâce à un processus de demande rapide et 100% en ligne, votre prêt peut être accordé en quelques jours seulement. 
-            Passez à l’action sans attendre et réalisez votre projet automobile dès aujourd’hui.
+            Invia la tua richiesta online in pochi clic. Riceverai una risposta rapida per realizzare i tuoi progetti senza attese.
           </p>
         </div>
 
@@ -53,11 +51,10 @@ const PretAuto: React.FC = () => {
           onClick={toggleModal}
           className="bg-blue-900 text-white px-6 py-2 rounded hover:bg-yellow-500 transition"
         >
-          Faire une demande
+          Invia una richiesta
         </button>
       </section>
 
-      {/* Modal avec conditions */}
       <AnimatePresence>
         {isModalOpen && (
           <motion.div
@@ -72,12 +69,12 @@ const PretAuto: React.FC = () => {
               exit={{ scale: 0.8, opacity: 0 }}
               className="bg-white p-6 rounded w-96 shadow-lg"
             >
-              <h2 className="text-2xl font-semibold mb-4">Conditions Générales</h2>
+              <h2 className="text-2xl font-semibold mb-4">Termini e Condizioni</h2>
               <div className="max-h-40 overflow-y-auto mb-4 text-sm text-gray-700 border p-3 rounded">
                 <p>
-                  En faisant une demande de prêt auto, vous acceptez que vos données soient traitées dans le cadre de l’étude de votre dossier.
-                  Vous vous engagez à fournir des informations exactes et à respecter les délais de remboursement fixés par le contrat de prêt.
-                  Toute fausse déclaration peut entraîner un refus du dossier. Consultez nos conditions de confidentialité pour plus d'informations.
+                  Inviando una richiesta di prestito personale, acconsenti al trattamento dei tuoi dati personali.
+                  Dichiari la veridicità delle informazioni fornite e ti impegni a rispettare le scadenze stabilite nel contratto.
+                  In caso di dichiarazioni false, la tua richiesta potrebbe essere rifiutata.
                 </p>
               </div>
               <label className="inline-flex items-center mb-4 text-gray-700">
@@ -87,20 +84,20 @@ const PretAuto: React.FC = () => {
                   onChange={() => setIsAccepted(!isAccepted)}
                   className="form-checkbox"
                 />
-                <span className="ml-2">J'accepte les conditions générales</span>
+                <span className="ml-2">Accetto i termini e le condizioni</span>
               </label>
               <div className="flex justify-end mt-2">
                 <button
                   onClick={handleSubmit}
                   className="bg-blue-900 text-white px-4 py-2 rounded hover:bg-yellow-500 transition"
                 >
-                  Continuer
+                  Continua
                 </button>
                 <button
                   onClick={toggleModal}
                   className="ml-3 text-gray-500 hover:text-gray-700"
                 >
-                  Fermer
+                  Chiudi
                 </button>
               </div>
             </motion.div>
@@ -108,7 +105,6 @@ const PretAuto: React.FC = () => {
         )}
       </AnimatePresence>
 
-      {/* Formulaire avec animation */}
       <AnimatePresence>
         {showForm && (
           <motion.section
@@ -118,30 +114,30 @@ const PretAuto: React.FC = () => {
             transition={{ duration: 0.4 }}
             className="bg-white p-8 rounded shadow-lg max-w-xl mx-auto mt-8"
           >
-            <h3 className="text-2xl font-semibold text-blue-900 mb-4">Formulaire de Demande - Prêt Auto</h3>
+            <h3 className="text-2xl font-semibold text-blue-900 mb-4">Modulo di Richiesta - Prestito Personale</h3>
             <form>
               <div className="mb-4">
-                <label className="block text-gray-700 mb-1">Type de prêt</label>
+                <label className="block text-gray-700 mb-1">Tipo di prestito</label>
                 <input
                   type="text"
-                  value="Prêt Auto"
+                  value="Prestito Personale"
                   readOnly
                   className="w-full px-3 py-2 border border-gray-300 rounded bg-gray-100 text-gray-500 cursor-not-allowed"
                 />
               </div>
 
               <div className="mb-4">
-                <label className="block text-gray-700 mb-1">Nom Complet</label>
+                <label className="block text-gray-700 mb-1">Nome Completo</label>
                 <input type="text" className="w-full px-3 py-2 border border-gray-300 rounded" />
               </div>
 
               <div className="mb-4">
-                <label className="block text-gray-700 mb-1">Montant souhaité (€)</label>
+                <label className="block text-gray-700 mb-1">Importo desiderato (€)</label>
                 <input type="number" className="w-full px-3 py-2 border border-gray-300 rounded" />
               </div>
 
               <div className="mb-4">
-                <label className="block text-gray-700 mb-1">Durée du prêt (mois)</label>
+                <label className="block text-gray-700 mb-1">Durata del prestito (mesi)</label>
                 <input type="number" className="w-full px-3 py-2 border border-gray-300 rounded" />
               </div>
 
@@ -149,7 +145,7 @@ const PretAuto: React.FC = () => {
                 type="submit"
                 className="bg-yellow-500 text-white px-6 py-2 rounded hover:bg-blue-900 transition"
               >
-                Envoyer la demande
+                Invia la richiesta
               </button>
             </form>
           </motion.section>
@@ -159,4 +155,4 @@ const PretAuto: React.FC = () => {
   );
 };
 
-export default PretAuto;
+export default PrestitoPersonale;

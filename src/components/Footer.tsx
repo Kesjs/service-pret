@@ -14,7 +14,7 @@ export default function Footer() {
           >
             <h3 className="text-xl font-bold mb-4">Finances-service</h3>
             <p className="text-gray-400">
-              Des solutions de crédit personnalisées pour donner vie à vos projets personnels ou professionnels.
+              Soluzioni di credito personalizzate per dare vita ai tuoi progetti personali o professionali.
             </p>
           </motion.div>
 
@@ -23,12 +23,12 @@ export default function Footer() {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.1 }}
           >
-            <h3 className="text-xl font-bold mb-4">Nos Prêts</h3>
+            <h3 className="text-xl font-bold mb-4">I Nostri Prestiti</h3>
             <ul className="space-y-2 text-gray-400">
-              <li><a href="#pret-auto" className="hover:text-yellow-400 transition">Prêt Auto</a></li>
-              <li><a href="#pret-immobilier" className="hover:text-yellow-400 transition">Prêt Immobilier</a></li>
-              <li><a href="#pret-pro" className="hover:text-yellow-400 transition">Prêt Professionnel</a></li>
-              <li><a href="#pret-perso" className="hover:text-yellow-400 transition">Prêt Personnel</a></li>
+              <li><a href="#nos-offres" className="hover:text-yellow-400 transition">Prestito Auto</a></li>
+              <li><a href="#nos-offres" className="hover:text-yellow-400 transition">Prestito Immobiliare</a></li>
+              <li><a href="#nos-offres" className="hover:text-yellow-400 transition">Prestito Professionale</a></li>
+              <li><a href="#nos-offres" className="hover:text-yellow-400 transition">Prestito Personale</a></li>
             </ul>
           </motion.div>
 
@@ -37,7 +37,7 @@ export default function Footer() {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
           >
-            <h3 className="text-xl font-bold mb-4">Contact</h3>
+            <h3 className="text-xl font-bold mb-4">Contatto</h3>
             <ul className="space-y-2 text-gray-400">
               <li>42 Avenue de la Marina</li>
               <li>75008 Cotonou</li>
@@ -51,7 +51,7 @@ export default function Footer() {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.3 }}
           >
-            <h3 className="text-xl font-bold mb-4">Réseaux Sociaux</h3>
+            <h3 className="text-xl font-bold mb-4">Social Media</h3>
             <div className="flex space-x-4">
               <a href="#" className="hover:text-yellow-400 transition-colors">
                 <Facebook className="w-6 h-6" />
@@ -76,7 +76,7 @@ export default function Footer() {
           transition={{ duration: 0.6, delay: 0.4 }}
           className="border-t border-gray-700 mt-12 pt-8 text-center text-gray-400"
         >
-          <p>&copy; {new Date().getFullYear()} Finances-services. Tous droits réservés.</p>
+          <p>&copy; {new Date().getFullYear()} Finances-service. Tutti i diritti riservati.</p>
         </motion.div>
       </div>
     </footer>
