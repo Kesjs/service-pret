@@ -30,10 +30,11 @@ export default function Header() {
             transition={{ duration: 0.5 }}
             className="text-2xl font-bold text-yellow-500"
           >
- Servizi - Prestito          </motion.h1>
+            Services-Prêt
+          </motion.h1>
 
           <nav className="hidden md:flex space-x-8 items-center">
-              {['Home', 'Servizi', 'Chi siamo', 'Contatti'].map((item) => (
+            {['Accueil', 'Services', 'À propos', 'Contact'].map((item) => (
               <motion.a
                 key={item}
                 href={item === 'Accueil' ? '#hero' : `#${item.toLowerCase()}`}
@@ -56,7 +57,7 @@ export default function Header() {
                 whileHover={{ scale: 1.05 }}
                 onClick={handleNosOffresClick} // Handle click on "Nos Offres"
               >
-                Le nostre offerte di credito <ChevronDown className="ml-1 w-4 h-4" />
+                Nos offres crédit <ChevronDown className="ml-1 w-4 h-4" />
               </motion.button>
 
               <AnimatePresence>
@@ -97,7 +98,7 @@ export default function Header() {
               className="flex items-center bg-yellow-500 text-white px-4 py-2 rounded-full hover:bg-yellow-600 transition-colors"
             >
               <Phone className="w-4 h-4 mr-2" />
-              <span>Ci chiami</span>
+              <span>Appelez-nous</span>
             </a>
           </motion.div>
 
@@ -126,7 +127,7 @@ export default function Header() {
           >
             <div className="space-y-4 px-4 py-4 flex flex-col justify-center items-center">
               {/* Menu Items */}
-              {['Home', 'Servizi', 'Chi siamo', 'Contatti'].map((item) => (
+              {['Accueil', 'Services', 'À propos', 'Contact'].map((item) => (
                 <motion.a
                   key={item}
                   href={item === 'Accueil' ? '#hero' : `#${item.toLowerCase()}`}
@@ -144,7 +145,7 @@ export default function Header() {
                 whileHover={{ scale: 1.05 }}
                 onClick={handleNosOffresClick} // Handle click on "Nos Offres"
               >
-                Le nostre offerte di credito<ChevronDown className="ml-1 w-4 h-4" />
+                Nos offres crédit <ChevronDown className="ml-1 w-4 h-4" />
               </motion.button>
 
               {isContentVisible && (
@@ -181,7 +182,7 @@ export default function Header() {
                   className="flex items-center text-white"
                 >
                   <Phone className="w-4 h-4 mr-2" />
-                  <span>Ci chiami</span>
+                  <span>Appelez-nous</span>
                 </a>
               </motion.div>
             </div>
