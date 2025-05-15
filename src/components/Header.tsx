@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 
 const creditOffers = [
   { title: 'Prestito Personale', href: '/nos-offres/pret-personnel' },
-  { title: 'Mutuo Immobiliare', href: '/nos-offres/pret-immobilier' },
+  { title: 'Prestito Immobiliare', href: '/nos-offres/pret-immobilier' },
   { title: 'Prestito Auto', href: '/nos-offres/pret-auto' },
   { title: 'Prestito Professionale', href: '/nos-offres/pret-pro' },
 ];
@@ -13,11 +13,11 @@ const creditOffers = [
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [showDropdown, setShowDropdown] = useState(false);
-  const [isContentVisible, setIsContentVisible] = useState(false); // Stato per mostrare il contenuto di Offerte
+  const [isContentVisible, setIsContentVisible] = useState(false);
 
   const handleNosOffresClick = () => {
-    setIsContentVisible(!isContentVisible); // Alterna la visibilità del contenuto
-    setShowDropdown(false); // Chiude il dropdown quando si clicca su Offerte
+    setIsContentVisible(!isContentVisible);
+    setShowDropdown(false);
   };
 
   return (
@@ -34,19 +34,22 @@ export default function Header() {
           </motion.h1>
 
           <nav className="hidden md:flex space-x-8 items-center">
-            {['Home', 'Servizi', 'Chi siamo', 'Contatto'].map((item) => (
-              <motion.a
-                key={item}
-                href={item === 'Home' ? '#hero' : `#${item.toLowerCase().replace(' ', '-')}`}
-                className="text-gray-600 hover:text-yellow-500 transition-colors"
-                whileHover={{ scale: 1.1 }}
-                onClick={() => setIsMenuOpen(false)}
-              >
-                {item}
-              </motion.a>
-            ))}
+            {["Home", "Servizi", "Chi siamo", "Contatto"].map((item, i) => {
+              const originalIds = ["Accueil", "Services", "À propos", "Contact"];
+              const id = originalIds[i];
+              return (
+                <motion.a
+                  key={id}
+                  href={id === 'Accueil' ? '#hero' : `#${id.toLowerCase()}`}
+                  className="text-gray-600 hover:text-yellow-500 transition-colors"
+                  whileHover={{ scale: 1.1 }}
+                  onClick={() => setIsMenuOpen(false)}
+                >
+                  {item}
+                </motion.a>
+              );
+            })}
 
-            {/* Offerte di credito */}
             <div
               className="relative"
               onMouseEnter={() => setShowDropdown(true)}
@@ -86,7 +89,6 @@ export default function Header() {
             </div>
           </nav>
 
-          {/* Pulsante chiamata su schermi grandi */}
           <motion.div
             className="hidden md:flex items-center"
             initial={{ opacity: 0, x: 20 }}
@@ -102,7 +104,6 @@ export default function Header() {
             </a>
           </motion.div>
 
-          {/* Icona menu mobile */}
           <div className="md:hidden">
             <button
               onClick={() => setIsMenuOpen(!isMenuOpen)}
@@ -115,7 +116,6 @@ export default function Header() {
         </div>
       </div>
 
-      {/* Menu mobile */}
       <AnimatePresence>
         {isMenuOpen && (
           <motion.div
@@ -126,19 +126,22 @@ export default function Header() {
             className="md:hidden absolute left-0 right-0 top-20 bg-white shadow-lg"
           >
             <div className="space-y-4 px-4 py-4 flex flex-col justify-center items-center">
-              {['Home', 'Servizi', 'Chi siamo', 'Contatto'].map((item) => (
-                <motion.a
-                  key={item}
-                  href={item === 'Home' ? '#hero' : `#${item.toLowerCase().replace(' ', '-')}`}
-                  className="block text-gray-600 hover:text-yellow-500 transition-colors"
-                  whileHover={{ scale: 1.1 }}
-                  onClick={() => setIsMenuOpen(false)}
-                >
-                  {item}
-                </motion.a>
-              ))}
+              {["Home", "Servizi", "Chi siamo", "Contatto"].map((item, i) => {
+                const originalIds = ["Accueil", "Services", "À propos", "Contact"];
+                const id = originalIds[i];
+                return (
+                  <motion.a
+                    key={id}
+                    href={id === 'Accueil' ? '#hero' : `#${id.toLowerCase()}`}
+                    className="block text-gray-600 hover:text-yellow-500 transition-colors"
+                    whileHover={{ scale: 1.1 }}
+                    onClick={() => setIsMenuOpen(false)}
+                  >
+                    {item}
+                  </motion.a>
+                );
+              })}
 
-              {/* Offerte di credito */}
               <motion.button
                 className="flex items-center text-gray-600 hover:text-yellow-500 transition-all"
                 whileHover={{ scale: 1.05 }}
@@ -169,7 +172,6 @@ export default function Header() {
                 </motion.ul>
               )}
 
-              {/* Pulsante chiamata per mobile */}
               <motion.div
                 className="flex items-center bg-yellow-500 text-white px-4 py-2 rounded-full hover:bg-yellow-600 transition-colors mt-4"
                 initial={{ opacity: 0, x: 20 }}
